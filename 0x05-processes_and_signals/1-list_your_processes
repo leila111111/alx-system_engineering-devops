@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Bash script that displays a list of currently running processes.
-#Must show all processes, for all users.
+# Bash script that displays a list of currently running processes.
+#  Must show all processes, for all users.
 
 ps auxf
