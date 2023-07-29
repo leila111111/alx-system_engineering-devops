@@ -14,8 +14,10 @@ delete_and_exit() {
     exit
 }
 trap 'echo "Y U no love me?!"' SIGINT
-trap 'echo "I hate the kill command"' SIGTERM
-trap 'delete_and_exit' SIGTERM SIGQUIT
+trap 'echo "I hate the kill command" && delete_and_exit' SIGTERM
+trap 'delete_and_exit' SIGQUIT
+
+
 while true 
 do
 	echo "To infinity and beyond"
