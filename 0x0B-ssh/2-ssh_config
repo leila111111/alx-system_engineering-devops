@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#SSH reconfiguration file for the local SSH client
+Host leila-web
+    Hostname 3.80.18.183
+    User ubuntu
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/school
