@@ -11,5 +11,5 @@ echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 sudo touch /var/www/html/404.html
 sudo chmod 666 /var/www/html/404.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
-sudo sed -i '/listen 80 default_server/r error_page 404 /404.html;' /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server/a error_page 404 /404.html;' /etc/nginx/sites-available/default
 sudo service nginx restart
