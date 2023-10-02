@@ -9,12 +9,11 @@ package { 'nginx':
   require => Exec['update'],
 }
 
-file_line { 'host':
-  ensure  => 'present',
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'listen 80 default_server;',
-  line    => 'add_header X-Served-By $(hostname);',
-  require => Package['nginx'],
+exec { 'add_header':
+  environment => ["HOST=${hostname}"],
+  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By \"$HOST\";/" /etc/nginx/nginx.conf',
+  provider    => shell,
+  before      => Exec['nginx restart'],
 }
 
 exec { 'nginx restart':
