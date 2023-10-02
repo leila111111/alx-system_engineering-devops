@@ -12,4 +12,4 @@ sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtu
 sudo sed -i '/listen 80 default_server/a error_page 404 /404.html;' /etc/nginx/sites-available/default
 sudo sed -i '/listen 80 default_server/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
 sudo ufw allow 'Nginx HTTP'
-service nginx start
+sudo service nginx start
