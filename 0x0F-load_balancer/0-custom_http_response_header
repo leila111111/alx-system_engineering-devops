@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# script to configure web-02 to be identical to web-01
+# and Configure Nginx so that its HTTP response contains a custom header
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo chmod 666 /var/www/html/index.nginx-debian.html
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+sudo touch /var/www/html/404.html
+sudo chmod 666 /var/www/html/404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;' /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server/a error_page 404 /404.html;' /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server/a add_header X-Served-By $(hostname);' /etc/nginx/sites-available/default
+service nginx start
