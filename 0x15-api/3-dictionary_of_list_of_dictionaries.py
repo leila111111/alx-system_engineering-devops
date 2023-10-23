@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """extend your Python script to export new data in the JSON format."""
-import requests
 import json
+import requests
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
