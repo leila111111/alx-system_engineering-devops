@@ -12,7 +12,7 @@ if __name__ == "__main__":
     for todo in todos:
         if todo.get("completed") is True:
             completed.append(todo.get("title"))
-    print("Employee {user.get("name")} is done with tasks("
+    print(f"Employee {user.get('name')} is done with tasks("
           f"{len(completed)}/{len(todos)}):")
     for i in completed:
         print(f"\t {i}")
